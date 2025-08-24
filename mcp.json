@@ -1,0 +1,155 @@
+{
+  "name": "file-stats-mcp",
+  "version": "2.3.0",
+  "description": "基于MCP的文件统计与分析工具，提供全面的文件系统分析功能",
+  "author": "File Stats Developer",
+  "homepage": "https://github.com/yourusername/file-stats-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/file-stats-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "file-system",
+    "statistics",
+    "analysis",
+    "tools",
+    "file-management"
+  ],
+  "license": "MIT",
+  "engines": {
+    "python": ">=3.8"
+  },
+  "dependencies": {
+    "fastmcp": ">=0.4.1"
+  },
+  "mcp": {
+    "transport": "stdio",
+    "command": "python",
+    "args": ["mcp_server.py"],
+    "env": {}
+  },
+  "tools": [
+    {
+      "name": "count_files",
+      "description": "统计指定目录中符合类型的文件数量",
+      "parameters": {
+        "directory": "目录路径",
+        "extension": "文件扩展名(可选)",
+        "recursive": "是否递归子目录"
+      }
+    },
+    {
+      "name": "list_files",
+      "description": "列出指定目录中符合类型的文件详细信息",
+      "parameters": {
+        "directory": "目录路径",
+        "extension": "文件扩展名(可选)",
+        "recursive": "是否递归子目录"
+      }
+    },
+    {
+      "name": "categorize_files_by_extension",
+      "description": "按文件扩展名对文件进行分类统计",
+      "parameters": {
+        "directory": "目录路径",
+        "recursive": "是否递归子目录"
+      }
+    },
+    {
+      "name": "get_directory_size",
+      "description": "计算目录的总大小",
+      "parameters": {
+        "directory": "目录路径",
+        "recursive": "是否递归子目录"
+      }
+    },
+    {
+      "name": "get_recent_files",
+      "description": "获取最近N天修改的文件列表",
+      "parameters": {
+        "directory": "目录路径",
+        "days": "回溯天数",
+        "extension_filter": "文件扩展名过滤(可选)",
+        "recursive": "是否递归子目录"
+      }
+    },
+    {
+      "name": "get_file_timeline",
+      "description": "获取文件时间线视图，按时间分组显示文件活动",
+      "parameters": {
+        "directory": "目录路径",
+        "days": "时间范围天数",
+        "group_by": "分组方式(day/week/month)",
+        "extension_filter": "文件扩展名过滤(可选)",
+        "recursive": "是否递归子目录"
+      }
+    },
+    {
+      "name": "delete_file",
+      "description": "安全删除文件或目录，支持强制删除和回收站功能",
+      "parameters": {
+        "path": "要删除的文件或目录路径",
+        "force": "是否强制删除非空目录",
+        "safe_mode": "是否使用安全模式(移动到回收站)"
+      }
+    },
+    {
+      "name": "safe_delete",
+      "description": "安全删除文件到回收站，支持备份功能",
+      "parameters": {
+        "path": "要删除的文件或目录路径",
+        "backup": "是否创建备份"
+      }
+    },
+    {
+      "name": "rename_file",
+      "description": "重命名文件或目录",
+      "parameters": {
+        "old_path": "原路径",
+        "new_name": "新名称"
+      }
+    },
+    {
+      "name": "move_file",
+      "description": "移动文件或目录到新位置",
+      "parameters": {
+        "source": "源路径",
+        "destination": "目标路径"
+      }
+    },
+    {
+      "name": "get_file_info",
+      "description": "获取文件或目录的详细信息",
+      "parameters": {
+        "path": "文件或目录路径"
+      }
+    }
+  ],
+  "categories": [
+    "文件管理",
+    "系统工具",
+    "数据分析"
+  ],
+  "screenshots": [
+    "docs/screenshot1.png",
+    "docs/screenshot2.png"
+  ],
+  "examples": [
+    {
+      "title": "统计桌面文件数量",
+      "description": "统计桌面所有PDF文件的数量",
+      "code": "count_files('~/Desktop', 'pdf', True)"
+    },
+    {
+      "title": "获取最近修改的文件",
+      "description": "获取最近7天修改的所有文件",
+      "code": "get_recent_files('~/Documents', 7)"
+    },
+    {
+      "title": "文件时间线分析",
+      "description": "分析最近30天的文件活动",
+      "code": "get_file_timeline('~/Downloads', 30, 'day')"
+    }
+  ]
+}
